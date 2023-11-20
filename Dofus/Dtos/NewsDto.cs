@@ -1,7 +1,8 @@
 ﻿namespace Dofus
 {
-    public class NewsDtos
+    public class NewsDto
     {
+        public int Id;
         public string Title { get; set; }
         public string Content { get; set; } // HTML content
         public string Image { get; set; }

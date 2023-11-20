@@ -3,6 +3,7 @@ using System;
 using Dofus.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dofus.Migrations
 {
     [DbContext(typeof(DofusContext))]
-    partial class DofusContextModelSnapshot : ModelSnapshot
+    [Migration("20231120110451_RenameNewsItemsToNews")]
+    partial class RenameNewsItemsToNews
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

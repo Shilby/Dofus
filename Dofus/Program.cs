@@ -1,4 +1,5 @@
 using Dofus.Data;
+using Dofus.DI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -18,7 +19,27 @@ builder.Services.AddDbContext<DofusContext>(options =>
                      new MySqlServerVersion(new Version(8, 0, 21))); 
 });
 
+builder.Services.AddAutoMapper(typeof(Program));
+
+//Injections
+builder.Services.AddServices();
+builder.Services.AddRepositories();
+
+//cors
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.WithOrigins("http://localhost:4200")
+               .AllowAnyHeader()
+               .AllowAnyMethod()
+               .AllowCredentials();
+    });
+});
+
+
 var app = builder.Build();
+
 
 
 // Configure the HTTP request pipeline.
@@ -27,8 +48,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors();
 app.UseHttpsRedirection();
+
 
 app.UseAuthorization();
 

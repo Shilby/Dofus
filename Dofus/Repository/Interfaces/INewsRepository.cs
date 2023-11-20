@@ -6,7 +6,7 @@ namespace Dofus.Repository.Interfaces
     {
         Task<IEnumerable<News>> GetAllNewsAsync();
         Task<News> GetNewsByIdAsync(int id);
-        Task AddNewsAsync(News news);
+        Task<News> AddNewsAsync(News news);
         Task UpdateNewsAsync(News news);
         Task DeleteNewsAsync(int id);
     }
