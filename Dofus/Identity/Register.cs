@@ -5,10 +5,13 @@ namespace Dofus.Identity
     public class Register
     {
         [Required, StringLength(100)]
-        public string FirstName { get; set; }
+        public string Pseudo { get; set; }
 
         [Required, StringLength(100)]
-        public string LastName { get; set; }
+        public string Question_Secrete { get; set; }
+
+        [Required, StringLength(100)]
+        public string Reponse_Secrete { get; set; }
 
         [Required, StringLength(128)]
         public string Email { get; set; }

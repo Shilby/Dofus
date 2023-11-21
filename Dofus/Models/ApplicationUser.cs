@@ -4,7 +4,8 @@ namespace Dofus.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string Pseudo { get; set; } 
+        public string Question_Secrete { get; set; }
+        public string Reponse_Secrete { get; set; }
     }
 }

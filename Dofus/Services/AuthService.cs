@@ -73,8 +73,9 @@ namespace Dofus.Services
             {
                 UserName = model.Email,
                 Email = model.Email,
-                FirstName = model.FirstName,
-                LastName = model.LastName
+                Pseudo = model.Pseudo,
+                Reponse_Secrete = model.Reponse_Secrete,
+                Question_Secrete = model.Question_Secrete
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);
@@ -125,7 +126,7 @@ namespace Dofus.Services
             var claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
-                new Claim(JwtRegisteredClaimNames.GivenName, $"{user.FirstName} {user.LastName}"),
+                new Claim(JwtRegisteredClaimNames.GivenName, $"{user.Pseudo}"),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim("uid", user.Id)
