@@ -1,10 +1,11 @@
 ﻿using Dofus.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
 namespace Dofus.Data
 {
-    public class DofusContext : DbContext
+    public class DofusContext : IdentityDbContext<ApplicationUser>
     {
         public DofusContext(DbContextOptions<DofusContext> options) : base(options) { }
 

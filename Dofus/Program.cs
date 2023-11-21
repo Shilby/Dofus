@@ -1,5 +1,9 @@
 using Dofus.Data;
 using Dofus.DI;
+using Dofus.Extensions;
+using Dofus.Models;
+using Dofus.Options;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -36,6 +40,12 @@ builder.Services.AddCors(options =>
                .AllowCredentials();
     });
 });
+
+builder.Services.AddSwaggerDocumentation();
+
+builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<DofusContext>();
 
 
 var app = builder.Build();
