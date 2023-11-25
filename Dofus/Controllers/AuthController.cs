@@ -30,7 +30,10 @@ namespace Dofus.Controllers
             var result = await _authService.RegisterAsync(model);
 
             if (!result.IsAuthenticated)
-                return BadRequest(result.Message);
+            {
+                // Return custom error message
+                return BadRequest(new { errors = new[] { result.Message } });
+            }
 
             return Ok(result);
         }
@@ -44,8 +47,10 @@ namespace Dofus.Controllers
             var result = await _authService.GetTokenAsync(model);
 
             if (!result.IsAuthenticated)
-                return BadRequest(result.Message);
-
+            {
+                // Return custom error message
+                return BadRequest(new { errors = new[] { "something wrong try again " } });
+            }
             return Ok(result);
         }
 
