@@ -2,7 +2,7 @@
 {
     public class NewsDto
     {
-        public int Id;
+        public int Id { get;  set; }
         public string Title { get; set; }
         public string Content { get; set; } // HTML content
         public string Image { get; set; }
